@@ -11,17 +11,28 @@ function FileUpload({
       return
     }
 
-    if (selectedFile.type !== "application/pdf") {
+    const fileName = selectedFile.name.toLowerCase()
+
+    const isPdf =
+      fileName.endsWith(".pdf") ||
+      selectedFile.type === "application/pdf"
+
+    if (!isPdf) {
       alert("Please select a PDF file.")
+      event.target.value = ""
       return
     }
 
     onFileSelect(selectedFile)
+
+    // Allow selecting the same file again later.
+    event.target.value = ""
   }
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md">
       <div className="flex h-full flex-col">
+
         <div className="mb-5">
           <h2 className="text-lg font-semibold text-slate-900">
             {title}
@@ -33,6 +44,7 @@ function FileUpload({
         </div>
 
         <label className="group flex min-h-48 cursor-pointer flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 text-center transition hover:border-blue-500 hover:bg-blue-50/40">
+
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-2xl">
             📄
           </div>
@@ -65,6 +77,7 @@ function FileUpload({
             className="hidden"
             onChange={handleChange}
           />
+
         </label>
       </div>
     </div>

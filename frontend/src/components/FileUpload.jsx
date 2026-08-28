@@ -3,6 +3,7 @@ function FileUpload({
   description,
   file,
   onFileSelect,
+  inputId,
 }) {
   const handleChange = (event) => {
     const selectedFile = event.target.files?.[0]
@@ -43,8 +44,10 @@ function FileUpload({
           </p>
         </div>
 
-        <label className="group flex min-h-48 cursor-pointer flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 text-center transition hover:border-blue-500 hover:bg-blue-50/40">
-
+        <label
+          htmlFor={inputId}
+          className="group flex min-h-48 cursor-pointer flex-1 flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 text-center transition hover:border-blue-500 hover:bg-blue-50/40"
+        >
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-2xl">
             📄
           </div>
@@ -70,15 +73,16 @@ function FileUpload({
               </p>
             </>
           )}
-
-          <input
-            type="file"
-            accept=".pdf,application/pdf"
-            className="hidden"
-            onChange={handleChange}
-          />
-
         </label>
+
+        <input
+          id={inputId}
+          type="file"
+          accept=".pdf,application/pdf"
+          className="hidden"
+          onChange={handleChange}
+        />
+
       </div>
     </div>
   )

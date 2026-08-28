@@ -112,27 +112,26 @@ function Home() {
         <section className="mt-14 grid gap-6 md:grid-cols-2">
 
           <FileUpload
-            title="Upload Resume"
-            description="Upload your latest resume in PDF format."
-            file={resume}
-            onFileSelect={(file) => {
-  setResume(file)
-  setResult(null)
-  setError("")
-}}
-          />
+  inputId="resume-file-input"
+  title="Upload Resume"
+  description="Upload your latest resume in PDF format."
+  file={resume}
+  onFileSelect={(file) => {
+    setResume(file)
+    setError("")
+  }}
+/>
 
-
-          <FileUpload
-            title="Upload Job Description"
-            description="Upload the job description you want to analyze."
-            file={jobDescription}
-           onFileSelect={(file) => {
-  setResume(file)
-  setResult(null)
-  setError("")
-}}
-          />
+<FileUpload
+  inputId="job-description-file-input"
+  title="Upload Job Description"
+  description="Upload the job description you want to analyze."
+  file={jobDescription}
+  onFileSelect={(file) => {
+    setJobDescription(file)
+    setError("")
+  }}
+/>
 
         </section>
 
